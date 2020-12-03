@@ -34,6 +34,7 @@ async (req,res)  => {
 
     const{email,password}=req.body;
     try {
+        
         let user = await User.findOne({email})
 
         if(!user){
