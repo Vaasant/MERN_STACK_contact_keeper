@@ -66,9 +66,10 @@ router.put('/:id',auth,async (req,res)  => {
 	if (name) contactFields.name = name;
 	if (email) contactFields.email = email;
 	if (phone) contactFields.phone = phone;
-	if (type) contactFields.type = type;
+    if (type) contactFields.type = type;
+    
 
-	try {
+	try{
 		let contact = await Contact.findById(req.params.id);
 
 		if (!contact) return res.status(404).json({ msg: 'Contact not found' });
@@ -84,7 +85,7 @@ router.put('/:id',auth,async (req,res)  => {
 		);
 
 		res.json(contact);
-	} catch (err) {
+	} catch(err){
 		console.error(err.message);
 		res.status(500).send('Server error');
 	}

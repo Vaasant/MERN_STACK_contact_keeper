@@ -28,7 +28,7 @@ router.post('/',
 
     const{name,email,password}=req.body;
 
-    try {
+    try{
         let user= await User.findOne({email})
 
         if(user){
@@ -59,12 +59,11 @@ router.post('/',
             if (err) throw err;
             res.json({token})
         })
-    } catch (error) {
+    } catch(error){
         
         console.error(error.message);
         res.status(500).send('Server Error')
     }
 });
-
 
 module.exports = router;
